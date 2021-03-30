@@ -1,8 +1,8 @@
 
 //Please type your email NOT your username. Cause for validate when you logged
 //If you type your username, there should be a something error
-const emailFacebook = "teguhtriprasetya12@yahoo.co.id";
-const passFacebook = "Techno123@!";
+const emailFacebook = "";
+const passFacebook = "";
 
 const emailGenflix = "testing.genflix@gmail.com";
 //please update this password if changed
