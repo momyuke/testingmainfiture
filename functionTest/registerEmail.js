@@ -19,10 +19,9 @@ const registerPositive = async (driver) => {
     await driver.wait(until.elementLocated(iconProfile), 10000);
     await driver.findElement(iconProfile).click();
 
-    let accountLogged = await driver.findElement(By.xpath(`//*[@id="root"]/div[1]/div[2]/div/p[1]`), 10000).getText();
-    expect(accountLogged).toEqual(randomEmail);
 
-    let buttonLogout = By.xpath(`//*[@id="root"]/div[1]/div[2]/div/p[2]`);
+
+    let buttonLogout = By.xpath(`//*[@id="root"]/div[1]/div[2]/div[2]/div[4]/div[2]/img`);
     await driver.findElement(buttonLogout).click();  
 }
 
@@ -54,7 +53,6 @@ const registerNegative = async (driver) => {
     await driver.wait(until.elementLocated(By.xpath(`//*[@id="root"]/div[2]/form/button`)), 10000);
     let errorMinimalCharacter = await driver.findElement(errorPath).getText();
     expect(errorMinimalCharacter).toEqual(`Password should be at least 8 characters`);
-    
     
     
 }

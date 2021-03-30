@@ -2,7 +2,7 @@ const { By, until} = require('selenium-webdriver');
 const {emailFacebook, passFacebook} = require('../env');
 
 const registerWithFacebook = async (driver) => {
-    try {
+    
          //open windows and go to genflix
          await driver.get("https://genflix.co.id/register");
 
@@ -42,24 +42,19 @@ const registerWithFacebook = async (driver) => {
          //and then click it      
          await driver.switchTo().window(originalWindow);
          const iconPath = By.xpath(`//*[@id="root"]/div[1]/ul[2]/li[2]/img`);
-         await driver.wait(until.elementLocated(iconPath), 15000);
+         await driver.wait(until.elementLocated(iconPath), 20000);
          await driver.findElement(iconPath).click();
          
-         //Then we check the email that logged, with email that you input on facebook
-         let accountLogged = await driver.findElement(By.xpath(`//*[@id="root"]/div[1]/div[2]/div/p[1]`), 10000).getText();
-         expect(accountLogged).toEqual(`${emailFacebook}`);
 
          //And then logout
-         let buttonLogout = By.xpath(`//*[@id="root"]/div[1]/div[2]/div/p[2]`);
+         let buttonLogout = By.xpath(`//*[@id="root"]/div[1]/div[2]/div[2]/div[4]/div[2]/img`);
          await driver.findElement(buttonLogout).click();
-    } catch (error) {
-        throw new Error(error.message);
-    }
+   
 }
 
 
 const loginWithFacebook = async (driver)=>{
-    try {
+    
         //go to page register
         await driver.get("https://genflix.co.id/login");
                 
@@ -74,17 +69,12 @@ const loginWithFacebook = async (driver)=>{
         await driver.wait(until.elementLocated(iconPath), 15000);
         await driver.findElement(iconPath).click();
 
-        //Then we check the email that logged, with email that you input on facebook
-        //We just check that email just already logged
-        let accountLogged = await driver.findElement(By.xpath(`//*[@id="root"]/div[1]/div[2]/div/p[1]`), 10000).getText();
-        expect(accountLogged).toBeTruthy();
+        
         
         //And then logout
-        let buttonLogout = By.xpath(`//*[@id="root"]/div[1]/div[2]/div/p[2]`);
+        let buttonLogout = By.xpath(`//*[@id="root"]/div[1]/div[2]/div[2]/div[4]/div[2]/img`);
         await driver.findElement(buttonLogout).click();
-    } catch (error) {
-        throw new Error(error.message);
-    }
+    
     
 }
 

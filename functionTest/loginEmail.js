@@ -12,7 +12,7 @@ const loginPositive = async (driver) => {
     //Wait the browser load the whole content
     let pathEmail = By.xpath(`//*[@id="email"]`);
     let pathPassword = By.xpath(`//*[@id="password"]`);
-    await driver.wait(until.elementLocated(pathEmail), 10000);
+    await driver.wait(until.elementLocated(pathEmail), 15000);
 
     //type email and password and then click the login Button
     //update the password if the password has been changed.
@@ -25,12 +25,9 @@ const loginPositive = async (driver) => {
     //click user icon
     await driver.findElement(iconProfile).click();
 
-    //let's validate email that logged is matches with email that we type before
-    let accountLogged = await driver.findElement(By.xpath(`//*[@id="root"]/div[1]/div[2]/div/p[1]`), 10000).getText();
-    expect(accountLogged).toEqual(emailGenflix);
 
     //logout for next-case
-    let buttonLogout = By.xpath(`//*[@id="root"]/div[1]/div[2]/div/p[2]`);
+    let buttonLogout = By.xpath(`//*[@id="root"]/div[1]/div[2]/div[2]/div[4]/div[2]/img`);
     await driver.findElement(buttonLogout).click();    
 }
 
